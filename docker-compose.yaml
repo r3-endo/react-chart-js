@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  frontend:
+    build: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - './:/usr/src/react-chart-js'
+    command: sh -c "cd frontend && PORT=3000 yarn start"
+    tty: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true # ホットリロードを有効にする
+    stdin_open: true
